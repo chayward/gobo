@@ -51,6 +51,24 @@
 #include <windows.h>
 #endif
 
+/* See https://sourceforge.net/p/predef/wiki/OperatingSystems/ */
+#if (defined(macintosh) || defined(Macintosh))
+#define EIF_MAC 1
+#define EIF_MACOSX 1
+#endif
+#if (defined(__APPLE__) && defined(__MACH__))
+/* Apparently ISE does not define EIF_MASOSX for Mac OS X >=10.4 (see EXECUTION_ENVIRONMENT.available_cpu_count) */
+#define EIF_MAC 1
+#endif
+
+#if (defined(VMS) || defined(__VMS))
+#define EIF_VMS 1
+#endif
+
+#if (defined(__VXWORKS__) || defined(__vxworks))
+#define EIF_VXWORKS 1
+#endif
+
 #define BYTEORDER 0x1234
 
 #include <stdlib.h>
